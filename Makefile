@@ -8,8 +8,6 @@ all: $(EXECUTABLES)
 -include $(DEPENDENCIES)
 
 install: $(EXECUTABLES)
-	chown root:bin $(EXECUTABLES)
-	chmod 755 $(EXECUTABLES)
 	mkdir -p $(PREFIX)/bin
 	cp $(EXECUTABLES) $(PREFIX)/bin/
 

@@ -1,0 +1,28 @@
+CC ?= gcc
+PREFIX ?= /opt/freeware
+DEFINES = -D_XOPEN_SOURCE=700 -D_DEFAULT_SOURCE=500 -DBSD_SOURCE -D_POSIX_C_SOURCE=200112L
+CFLAGS += $(DEFINES) -c -std=c99 -O2 -MMD
+LDFLAGS += -s -ljson-c
+SOURCES = psjson.c
+OBJECTS = $(SOURCES:.c=.o)
+DEPENDENCIES = $(SOURCES:.c=.d)
+
+COMPILE = $(CC) $(CFLAGS)
+LINK = $(CC) $(LDFLAGS)
+
+EXECUTABLE = psjson
+
+.PHONY: all clean
+
+all: $(EXECUTABLE)
+
+-include $(DEPENDENCIES)
+
+clean :
+	rm $(EXECUTABLE) $(OBJECTS) $(DEPENDENCIES)
+
+$(EXECUTABLE): $(OBJECTS)
+	$(LINK) $^ -o $@
+
+%.o: %.c
+	$(COMPILE) $^ -o $@

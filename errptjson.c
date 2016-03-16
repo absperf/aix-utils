@@ -1,13 +1,20 @@
 /*
- * Copyright © 2016 Absolute Performance Inc <csteam@absolute-performance.com>.
+ * Copyright © 2015 Absolute Performance Inc <csteam@absolute-performance.com>.
  * Written by Taylor C. Richberger <tcr@absolute-performance.com>
- * All rights reserved.
- * This is proprietary software.
- * No warranty, explicit or implicit, provided.
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option)
+ * any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-// This can be compiled with gcc -oerrptjson errptjson.c -ljson-c -lerrlog -std=c99
-// You may want to compile to an object and mung with the linker to get json-c to statically link
 
 #include <fcntl.h>
 #include <stdio.h>

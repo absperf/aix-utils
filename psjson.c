@@ -1,27 +1,20 @@
 /*
  * Copyright © 2015 Absolute Performance Inc <csteam@absolute-performance.com>.
  * Written by Taylor C. Richberger <tcr@absolute-performance.com>
- * All rights reserved.
- * This is proprietary software.
- * No warranty, explicit or implicit, provided.
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option)
+ * any later version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-// This can be compiled with gcc -opsjson psjson.c -ljson-c
-// You may want to compile to an object and mung with the linker to get json-c to statically link
-
-// This was initially to be a Perl utility for json procfs reading, to not have
-// to screw with the ps output (which is horridly unreliable and changes based
-// on terminal width, as well as having a changing and virtually unparsable
-// start timestamp), but Perl could not read 64-bit integers from the structure
-// with Unpack, and to attempt to pull out the data manually (in two 32-bit
-// chunks) looked like it was going to make it unreliable to match a ppid to a
-// pid, which was part of the main point of this.
-//
-// After that, we were going to use a Perl XSUB to do it, but the XSUB,
-// compiled with GCC, did not want to play nice with the Perl implementation,
-// compiled with XL C++.  It seemed easier to just write a C program to read it
-// and serialize it for regular consumption.  Perl's JSON module appears to
-// serialize large integers to strings, which works fine for matching purposes.
 
 #include <sys/procfs.h>
 #include <sys/types.h>
